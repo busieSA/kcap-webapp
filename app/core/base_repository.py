@@ -52,7 +52,7 @@ class BaseRepository:
     @classmethod
     def exists(cls, **kwargs):
         return (
-            cls.model.query.filter_by((**kwargs).first() is not None)
+            cls.model.query.filter_by(**kwargs).first() is not None
         )
 
     @classmethod

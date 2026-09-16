@@ -1,0 +1,488 @@
+html,
+body {
+    min-height: 100%;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+main {
+    flex: 1;
+}
+
+
+.navbar-brand {
+    letter-spacing: 0.02em;
+}
+
+
+.website-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.website-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+       Brand tokens.
+       No verified brand colour could be found for kcap.co.za
+       (the domain currently resolves to a hosting parking page,
+       no archived version was found). These are a considered
+       placeholder palette for an arts & culture NPO — swap the
+       hex values below for KCAP's real brand colours if/when
+       available, everything else here will follow automatically.
+    --------------------------------------------------------- */
+    :root {
+        --kcap-terracotta: #c1552c;
+        --kcap-terracotta-dark: #9c421f;
+        --kcap-indigo: #1f2a44;
+        --kcap-indigo-light: #2c3b61;
+        --kcap-gold: #e8a33d;
+        --kcap-cream: #fbf4ec;
+
+        --kcap-ink: #1b2233;
+        --kcap-muted: #6b7280;
+        --kcap-hairline: rgba(31, 42, 68, 0.10);
+        --kcap-radius: 1.25rem;
+        --kcap-ring: 0 0 0 0.2rem rgba(193, 85, 44, 0.18);
+    }
+
+
+    /* =========================================================
+       Section shell
+       ========================================================= */
+    .donate-section {
+        position: relative;
+        padding: clamp(2.5rem, 6vw, 5rem) 0;
+        background:
+            radial-gradient(45rem 30rem at 108% -10%, rgba(193, 85, 44, 0.10), transparent 62%),
+            radial-gradient(40rem 28rem at -12% 110%, rgba(232, 163, 61, 0.14), transparent 62%),
+            var(--kcap-cream);
+    }
+
+
+    /* =========================================================
+       Hero panel
+       ========================================================= */
+    .donate-hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(1.75rem, 4vw, 3rem);
+        border-radius: var(--kcap-radius);
+        color: #fff;
+        background: linear-gradient(
+            155deg,
+            #16203a 0%,
+            var(--kcap-indigo) 45%,
+            var(--kcap-indigo-light) 100%
+        );
+        box-shadow: 0 1.75rem 3.5rem -1.75rem rgba(31, 42, 68, 0.6);
+    }
+
+    /* Warm glow, top-right */
+    .donate-hero::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -12rem;
+        right: -10rem;
+        width: 26rem;
+        height: 26rem;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, rgba(232, 163, 61, 0.40), transparent 68%);
+    }
+
+    /* Faint diagonal texture, fading out towards the bottom */
+    .donate-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image: repeating-linear-gradient(
+            118deg,
+            rgba(255, 255, 255, 0.055) 0 1px,
+            transparent 1px 20px
+        );
+        -webkit-mask-image: linear-gradient(to bottom, #000, transparent 85%);
+                mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    }
+
+    .donate-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        gap: 0.5rem;
+        padding: 0.4rem 0.9rem;
+        border: 1px solid rgba(232, 163, 61, 0.45);
+        border-radius: 999px;
+        background: rgba(232, 163, 61, 0.12);
+        color: var(--kcap-gold);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .donate-eyebrow .bi {
+        font-size: 0.7rem;
+    }
+
+    .donate-hero h1 {
+        font-size: clamp(1.85rem, 1.1rem + 2.4vw, 2.85rem);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+    }
+
+    .donate-lead {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.02rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* ---------- Impact list ---------- */
+    .donate-impact-list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0 2rem;
+    }
+
+    .donate-impact-list li {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 0.9rem;
+        align-items: start;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .donate-impact-list li:first-child {
+        padding-top: 0;
+    }
+
+    .donate-impact-list li:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .donate-impact-icon {
+        display: grid;
+        place-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--kcap-gold);
+        font-size: 1.05rem;
+    }
+
+    .donate-impact-list strong {
+        display: block;
+        color: #fff;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .donate-impact-list p {
+        margin: 0.15rem 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    /* ---------- Trust note (pinned to the bottom) ---------- */
+    .donate-trust-note {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-top: auto;
+        padding: 0.85rem 1rem;
+        border-radius: 0.85rem;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    .donate-trust-note .bi {
+        color: var(--kcap-gold);
+        font-size: 1rem;
+        flex: 0 0 auto;
+    }
+
+
+    /* =========================================================
+       Donation card
+       ========================================================= */
+    .donate-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--kcap-hairline);
+        border-radius: var(--kcap-radius);
+        background: #fff;
+        box-shadow: 0 1.75rem 3.5rem -2rem rgba(31, 42, 68, 0.35);
+    }
+
+    /* Brand accent bar along the top edge */
+    .donate-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 5px;
+        background: linear-gradient(90deg, var(--kcap-terracotta), var(--kcap-gold));
+    }
+
+    .donate-card .card-body {
+        padding: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .donate-card-head p {
+        color: var(--kcap-muted);
+        font-size: 0.9rem;
+    }
+
+    /* ---------- Fieldset headings ---------- */
+    .donate-fieldset + .donate-fieldset {
+        margin-top: 1.75rem;
+    }
+
+    .donate-legend {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.9rem;
+        color: var(--kcap-muted);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .donate-legend::after {
+        content: "";
+        flex: 1 1 auto;
+        height: 1px;
+        background: var(--kcap-hairline);
+    }
+
+    /* ---------- Form controls ---------- */
+    .donate-card .form-label {
+        margin-bottom: 0.35rem;
+        color: var(--kcap-ink);
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .donate-card .form-control,
+    .donate-card .form-select {
+        padding: 0.65rem 0.9rem;
+        border-color: var(--kcap-hairline);
+        border-radius: 0.75rem;
+    }
+
+    .donate-card .form-control:focus,
+    .donate-card .form-select:focus {
+        border-color: var(--kcap-terracotta);
+        box-shadow: var(--kcap-ring);
+    }
+
+    .donate-card .form-text {
+        color: var(--kcap-muted);
+        font-size: 0.82rem;
+    }
+
+    .donate-card .input-group-text {
+        border-color: var(--kcap-hairline);
+        background: var(--kcap-cream);
+        color: var(--kcap-terracotta-dark);
+        font-weight: 700;
+        border-radius: 0.75rem 0 0 0.75rem;
+    }
+
+    .donate-card .input-group > .form-control {
+        border-radius: 0 0.75rem 0.75rem 0;
+    }
+
+    .donate-card .form-check-input:checked {
+        background-color: var(--kcap-terracotta);
+        border-color: var(--kcap-terracotta);
+    }
+
+    .donate-card .form-check-input:focus {
+        border-color: var(--kcap-terracotta);
+        box-shadow: var(--kcap-ring);
+    }
+
+    /* ---------- Quick-amount buttons ----------
+       Same .js-donation-amount hook and data-amount
+       attributes the existing JS relies on — only the
+       visual treatment changes here. */
+    .amount-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.6rem;
+    }
+
+    @media (min-width: 576px) {
+        .amount-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    .js-donation-amount {
+        padding: 0.85rem 0.5rem;
+        border: 1.5px solid rgba(193, 85, 44, 0.35);
+        border-radius: 0.85rem;
+        background: #fff;
+        color: var(--kcap-terracotta-dark);
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+        transition:
+            background-color 0.15s ease,
+            border-color 0.15s ease,
+            color 0.15s ease,
+            box-shadow 0.15s ease,
+            transform 0.15s ease;
+    }
+
+    .js-donation-amount:hover {
+        background: var(--kcap-cream);
+        border-color: var(--kcap-terracotta);
+        color: var(--kcap-terracotta-dark);
+        transform: translateY(-1px);
+    }
+
+    .js-donation-amount:focus-visible {
+        outline: none;
+        box-shadow: var(--kcap-ring);
+    }
+
+    /* Applied by the enhancement script (and/or donations.js)
+       when an amount is selected. */
+    .js-donation-amount.active {
+        background: var(--kcap-terracotta);
+        border-color: var(--kcap-terracotta);
+        color: #fff;
+        box-shadow: 0 0.6rem 1.2rem -0.6rem rgba(193, 85, 44, 0.9);
+    }
+
+    /* ---------- "or" divider ---------- */
+    .donate-or {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 1.1rem 0;
+        color: var(--kcap-muted);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .donate-or::before,
+    .donate-or::after {
+        content: "";
+        flex: 1 1 auto;
+        height: 1px;
+        background: var(--kcap-hairline);
+    }
+
+    /* ---------- Anonymous checkbox panel ---------- */
+    .donate-anon {
+        padding: 0.85rem 1rem;
+        border: 1px solid var(--kcap-hairline);
+        border-radius: 0.85rem;
+        background: #fcfaf8;
+    }
+
+    /* ---------- Submit ---------- */
+    .btn-donate {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        width: 100%;
+        padding: 0.95rem 1.25rem;
+        border: 0;
+        border-radius: 0.85rem;
+        background: linear-gradient(135deg, var(--kcap-terracotta), var(--kcap-terracotta-dark));
+        color: #fff;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        box-shadow: 0 1rem 1.75rem -0.9rem rgba(193, 85, 44, 0.9);
+        transition:
+            transform 0.15s ease,
+            box-shadow 0.15s ease,
+            filter 0.15s ease;
+    }
+
+    .btn-donate:hover,
+    .btn-donate:focus-visible {
+        color: #fff;
+        transform: translateY(-1px);
+        filter: brightness(1.06);
+        box-shadow: 0 1.25rem 2rem -0.9rem rgba(193, 85, 44, 0.95);
+    }
+
+    .btn-donate:active {
+        transform: translateY(0);
+    }
+
+    .btn-donate:disabled {
+        opacity: 0.7;
+        box-shadow: none;
+    }
+
+    .donate-secure-note {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        margin-top: 0.9rem;
+        color: var(--kcap-muted);
+        font-size: 0.82rem;
+    }
+
+    .donate-secure-note .bi {
+        color: #2f8f5b;
+    }
+
+    /* ---------- Alert ---------- */
+    #donationAlert {
+        border: 0;
+        border-radius: 0.85rem;
+        font-size: 0.9rem;
+    }
+
+
+    /* =========================================================
+       Motion preferences
+       ========================================================= */
+    @media (prefers-reduced-motion: reduce) {
+        .js-donation-amount,
+        .btn-donate {
+            transition: none;
+        }
+
+        .js-donation-amount:hover,
+        .btn-donate:hover,
+        .btn-donate:focus-visible {
+            transform: none;
+        }
+    }

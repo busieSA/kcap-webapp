@@ -1,0 +1,42 @@
+/*
+|--------------------------------------------------------------------------
+| KCAP Dashboard
+|--------------------------------------------------------------------------
+*/
+
+body {
+    min-height: 100vh;
+}
+
+
+.small-box {
+    min-height: 140px;
+}
+
+
+.small-box .inner h3 {
+    font-size: 2rem;
+}
+
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+
+@media (max-width: 575.98px) {
+
+    .app-content-header {
+        padding-bottom: 0.5rem;
+    }
+
+    .small-box {
+        min-height: 120px;
+    }
+
+    .small-box .inner h3 {
+        font-size: 1.75rem;
+    }
+
+}

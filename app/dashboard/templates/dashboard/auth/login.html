@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        KCAP Admin Login
+    </title>
+
+
+    <!-- AdminLTE -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/css/adminlte.min.css"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- KCAP Login -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'dashboard.static',
+            filename='css/login.css'
+        ) }}"
+    >
+
+</head>
+
+
+<body class="login-page bg-body-secondary">
+
+<div class="login-box">
+
+    <div class="login-logo">
+
+        <a href="#">
+            <strong>KCAP</strong>
+            Admin
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-body login-card-body">
+
+            <p class="login-box-msg">
+
+                Sign in to the administration portal
+
+            </p>
+
+
+            <div
+                class="alert alert-danger d-none"
+                id="loginError"
+                role="alert"
+            ></div>
+
+
+            <form
+                id="loginForm"
+                novalidate
+            >
+
+                <div class="mb-3">
+
+                    <label
+                        for="email"
+                        class="form-label"
+                    >
+                        Email address
+                    </label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            autocomplete="username"
+                            required
+                        >
+
+                        <span class="input-group-text">
+
+                            <i class="bi bi-envelope"></i>
+
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="invalid-feedback"
+                        id="emailError"
+                    ></div>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="password"
+                        class="form-label"
+                    >
+                        Password
+                    </label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary js-toggle-password"
+                            aria-label="Show password"
+                        >
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="invalid-feedback"
+                        id="passwordError"
+                    ></div>
+
+                </div>
+
+
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="loginButton"
+                    >
+
+                        <span class="js-login-label">
+                            Sign In
+                        </span>
+
+                        <span
+                            class="spinner-border spinner-border-sm ms-2 d-none js-login-spinner"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- jQuery -->
+<script
+    src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+<!-- Bootstrap -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- AdminLTE -->
+<script
+    src="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/js/adminlte.min.js">
+</script>
+
+<!-- Login module -->
+<script
+    src="{{ url_for(
+        'dashboard.static',
+        filename='js/modules/login.js'
+    ) }}">
+</script>
+
+</body>
+
+</html>

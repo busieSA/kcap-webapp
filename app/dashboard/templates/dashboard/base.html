@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        {% block title %}
+            KCAP Admin
+        {% endblock %}
+    </title>
+
+    {#<!-- AdminLTE / Bootstrap -->#}
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/css/adminlte.min.css"
+    >
+
+    {#<!-- Bootstrap Icons -->#}
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    {#<!-- KCAP Dashboard -->#}
+    <link
+        rel="stylesheet"
+        href="{{ url_for('dashboard.static', filename='css/dashboard.css') }}"
+    >
+
+    {% block styles %}{% endblock %}
+
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+
+<div class="app-wrapper">
+
+    {% include "dashboard/partials/navbar.html" %}
+
+    {% include "dashboard/partials/sidebar.html" %}
+
+
+    <main class="app-main">
+
+        <div class="app-content-header">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <h3 class="mb-0">
+                            {% block page_title %}
+                                Dashboard
+                            {% endblock %}
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="app-content">
+
+            <div class="container-fluid">
+
+                {% include "dashboard/partials/flash_messages.html" %}
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    {% include "dashboard/partials/footer.html" %}
+
+</div>
+
+
+{#<!-- jQuery -->#}
+<script
+    src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+{#<!-- Bootstrap -->#}
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+{#<!-- AdminLTE -->#}
+<script
+    src="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/js/adminlte.min.js">
+</script>
+
+{#<!-- KCAP Dashboard -->#}
+<script
+    src="{{ url_for('dashboard.static', filename='js/dashboard.js') }}">
+</script>
+
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>

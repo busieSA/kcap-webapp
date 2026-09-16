@@ -1,0 +1,288 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block title %}
+Enquiries | KCAP Admin
+{% endblock %}
+
+
+{% block page_title %}
+Enquiries
+{% endblock %}
+
+
+{% block content %}
+
+<div class="card mb-3">
+
+    <div class="card-body">
+
+        <form
+            method="GET"
+            action="{{ url_for('dashboard.enquiries') }}"
+            class="row g-2"
+        >
+
+            <div class="col-12 col-md-6">
+
+                <label
+                    for="enquirySearch"
+                    class="form-label"
+                >
+                    Search
+                </label>
+
+                <input
+                    type="search"
+                    class="form-control"
+                    id="enquirySearch"
+                    name="q"
+                    value="{{ keyword }}"
+                    placeholder="Name, email, phone, subject..."
+                >
+
+            </div>
+
+
+            <div class="col-12 col-sm-6 col-md-3">
+
+                <label
+                    for="statusFilter"
+                    class="form-label"
+                >
+                    Status
+                </label>
+
+                <select
+                    class="form-select"
+                    id="statusFilter"
+                    name="status"
+                >
+
+                    <option value="">
+                        All
+                    </option>
+
+                    <option
+                        value="new"
+                        {% if selected_status == "new" %}
+                            selected
+                        {% endif %}
+                    >
+                        New
+                    </option>
+
+                    <option
+                        value="read"
+                        {% if selected_status == "read" %}
+                            selected
+                        {% endif %}
+                    >
+                        Read
+                    </option>
+
+                    <option
+                        value="resolved"
+                        {% if selected_status == "resolved" %}
+                            selected
+                        {% endif %}
+                    >
+                        Resolved
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                class="col-12 col-sm-6 col-md-3
+                       d-flex align-items-end gap-2"
+            >
+
+                <button
+                    type="submit"
+                    class="btn btn-primary flex-grow-1"
+                >
+                    <i class="bi bi-search me-1"></i>
+                    Filter
+                </button>
+
+                <a
+                    href="{{ url_for('dashboard.enquiries') }}"
+                    class="btn btn-outline-secondary"
+                >
+                    Reset
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3 class="card-title">
+            Enquiries
+        </h3>
+
+    </div>
+
+
+    <div class="card-body p-0">
+
+        {% if enquiries %}
+
+            <div class="table-responsive">
+
+                <table
+                    class="table table-hover align-middle mb-0"
+                    id="enquiryTable"
+                >
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Client
+                            </th>
+
+                            <th class="d-none d-md-table-cell">
+                                Subject
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th class="d-none d-lg-table-cell">
+                                Received
+                            </th>
+
+                            <th class="text-end">
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for enquiry in enquiries %}
+
+                            <tr
+                                id="enquiry-row-{{ enquiry.id }}"
+                                data-enquiry-id="{{ enquiry.id }}"
+                            >
+
+                                <td>
+
+                                    <div class="fw-semibold">
+                                        {{ enquiry.name }}
+                                    </div>
+
+                                    <div class="small text-muted">
+                                        {{ enquiry.email }}
+                                    </div>
+
+                                </td>
+
+
+                                <td class="d-none d-md-table-cell">
+
+                                    {{ enquiry.subject or "General enquiry" }}
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="
+                                            badge
+                                            js-enquiry-status
+
+                                            {% if enquiry.status.value == 'new' %}
+                                                text-bg-warning
+                                            {% elif enquiry.status.value == 'resolved' %}
+                                                text-bg-success
+                                            {% else %}
+                                                text-bg-secondary
+                                            {% endif %}
+                                        "
+                                    >
+                                        {{ enquiry.status.value|title }}
+                                    </span>
+
+                                </td>
+
+
+                                <td class="d-none d-lg-table-cell">
+
+                                    {{ enquiry.created_at.strftime("%d %b %Y %H:%M") }}
+
+                                </td>
+
+
+                                <td class="text-end">
+
+                                    <a
+                                        href="{{ url_for(
+                                            'dashboard.enquiry_details',
+                                            enquiry_id=enquiry.id
+                                        ) }}"
+                                        class="btn btn-sm btn-outline-primary"
+                                    >
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% else %}
+
+            <div class="p-4 text-center text-muted">
+
+                <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+
+                No enquiries found.
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script
+    src="{{ url_for(
+        'dashboard.static',
+        filename='js/modules/enquiries.js'
+    ) }}"
+></script>
+
+{% endblock %}

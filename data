@@ -1,0 +1,36 @@
+flask --app run.py create-admin
+
+
+Right now we effectively have:
+
+Foundation/core ✅
+Contact/enquiry backend ✅
+Admin users/authentication ✅
+Admin login ✅
+Dashboard shell ✅
+Enquiry management flow ✅
+Role protection → now
+Donation gateway foundation → next
+SEO/public-site finishing → after
+QA/deployment → final block
+
+So let’s close authentication properly.
+
+
+from app.auth.decorators import role_required
+
+
+@dashboard_bp.get("/")
+@role_required(
+    "administrator",
+    "super_admin"
+)
+def index():
+    ...
+
+
+The next file I’d build is actually gateway.py before service.py, because then the service can be 
+designed against the gateway contract from the beginning rather than later being refactored around it.
+
+public Donate page + modular jQuery
+

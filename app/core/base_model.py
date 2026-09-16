@@ -6,6 +6,8 @@ def utc_now():
 
     return datetime.now(timezone.utc)
 
+d_col = db.Column
+
 class CoreMixin:
 
     id = db.Column(
@@ -171,24 +173,24 @@ class SerializerMixin:
     def to_dict(
             self,
             exclude=None
-    )
+    ):
 
-    exclude = set(exclude or [])
+        exclude = set(exclude or [])
 
-    data = {}
+        data = {}
 
-    for column in self.__table__.columns:
-        for column.name in exclude:
-            continue
+        for column in self.__table__.columns:
+            for column.name in exclude:
+                continue
 
-        value = getattr(
-            self, column.name
-        )
+            value = getattr(
+                self, column.name
+            )
 
-        if isinstance(value, datetime):
-            value = value.isoformat()
+            if isinstance(value, datetime):
+                value = value.isoformat()
 
-        data[column.name] = value
+            data[column.name] = value
 
         return data
     
