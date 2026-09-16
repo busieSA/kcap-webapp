@@ -1,0 +1,74 @@
+<aside
+    class="app-sidebar bg-dark shadow"
+    data-bs-theme="dark"
+>
+
+    <div class="sidebar-brand">
+
+        <a
+            href="{{ url_for('dashboard.index') }}"
+            class="brand-link"
+        >
+            <span class="brand-text fw-light">
+                KCAP Admin
+            </span>
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-wrapper">
+
+        <nav class="mt-2">
+
+            <ul
+                class="nav sidebar-menu flex-column"
+                data-lte-toggle="treeview"
+                role="menu"
+                data-accordion="false"
+            >
+
+                <li class="nav-item">
+
+                    <a
+                        href="{{ url_for('dashboard.index') }}"
+                        class="nav-link active"
+                    >
+                        <i class="nav-icon bi bi-speedometer2"></i>
+
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        href="{{ url_for('dashboard.enquiries') }}"
+                        class="nav-link"
+                    >
+                        <i class="nav-icon bi bi-envelope"></i>
+
+                        <p>
+                            Enquiries
+
+                            {% if new_enquiries is defined and new_enquiries %}
+                                <span class="nav-badge badge text-bg-danger me-3">
+                                    {{ new_enquiries }}
+                                </span>
+                            {% endif %}
+                        </p>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</aside>

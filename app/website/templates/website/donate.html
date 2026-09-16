@@ -1,0 +1,445 @@
+{% extends "website/base.html" %}
+
+
+{% block title %}
+Support KCAP | Donate
+{% endblock %}
+
+
+{% block meta_description %}
+Support KCAP's youth arts and community programmes in KwaMashu, Durban. Since 1993, KCAP has used theatre, dance, music and film to build futures — your donation keeps that work going.
+{% endblock %}
+
+
+{% block styles %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="donate-section">
+
+    <div class="container">
+
+        <div class="row g-4 g-xl-5 justify-content-center">
+
+
+            <!-- =================================================
+                 Donation information
+                 ================================================= -->
+            <div class="col-12 col-lg-6">
+
+                <div class="donate-hero">
+
+                    <span class="donate-eyebrow">
+                        <i class="bi bi-star-fill"></i>
+                        Supporting KwaMashu since 1993
+                    </span>
+
+                    <h1 class="mt-3 mb-0">
+                        Help KCAP keep the arts alive in KwaMashu.
+                    </h1>
+
+                    <p class="donate-lead mt-3">
+                        From the Ekhaya Multi Arts Centre to festivals,
+                        mentorship and training programmes, your
+                        contribution helps young people in KwaMashu build
+                        futures through theatre, dance, music and film.
+                    </p>
+
+                    <ul class="donate-impact-list">
+
+                        <li>
+                            <span class="donate-impact-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </span>
+                            <div>
+                                <strong>Youth Development</strong>
+                                <p>
+                                    Mentorship, training and skills for the
+                                    next generation of artists.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="donate-impact-icon">
+                                <i class="bi bi-palette-fill"></i>
+                            </span>
+                            <div>
+                                <strong>Arts &amp; Culture</strong>
+                                <p>
+                                    Theatre, dance, music and film rooted in
+                                    KwaMashu's creative heritage.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="donate-impact-icon">
+                                <i class="bi bi-house-heart-fill"></i>
+                            </span>
+                            <div>
+                                <strong>Community Programmes</strong>
+                                <p>
+                                    Bringing the arts closer to the people
+                                    who need them most.
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <div class="donate-trust-note">
+                        <i class="bi bi-shield-check"></i>
+                        <span>
+                            KCAP is a non-profit organisation based in
+                            KwaMashu, KwaZulu-Natal.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 Donation form
+                 ================================================= -->
+            <div class="col-12 col-lg-6">
+
+                <div class="card donate-card">
+
+                    <div class="card-body">
+
+                        <header class="donate-card-head mb-4">
+                            <h2 class="h4 mb-1">Make a donation</h2>
+                            <p class="mb-0">
+                                Every contribution keeps KCAP's doors open.
+                            </p>
+                        </header>
+
+
+                        <div
+                            id="donationAlert"
+                            class="alert d-none mb-4"
+                            role="alert"
+                            aria-live="polite">
+                        </div>
+
+
+                        <form id="donationForm">
+
+
+                            <!-- =============================
+                                 Amount
+                                 ============================= -->
+                            <div class="donate-fieldset">
+
+                                <p class="donate-legend">
+                                    Choose an amount
+                                </p>
+
+                                <div class="amount-grid">
+
+                                    <button
+                                        type="button"
+                                        class="btn js-donation-amount"
+                                        data-amount="100"
+                                        aria-pressed="false">
+                                        R100
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="btn js-donation-amount"
+                                        data-amount="250"
+                                        aria-pressed="false">
+                                        R250
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="btn js-donation-amount"
+                                        data-amount="500"
+                                        aria-pressed="false">
+                                        R500
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="btn js-donation-amount"
+                                        data-amount="1000"
+                                        aria-pressed="false">
+                                        R1,000
+                                    </button>
+
+                                </div>
+
+                                <div class="donate-or">
+                                    <span>or enter your own</span>
+                                </div>
+
+                                <label
+                                    for="donationAmount"
+                                    class="form-label">
+                                    Donation amount
+                                </label>
+
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="donationAmount"
+                                        name="amount"
+                                        min="1"
+                                        step="0.01"
+                                        inputmode="decimal"
+                                        placeholder="0.00"
+                                        required>
+                                </div>
+
+                                <input
+                                    type="hidden"
+                                    name="currency"
+                                    value="ZAR">
+
+                            </div>
+
+
+                            <!-- =============================
+                                 Donor details
+                                 ============================= -->
+                            <div class="donate-fieldset">
+
+                                <p class="donate-legend">
+                                    Your details
+                                </p>
+
+                                <div class="row g-3 mb-3">
+
+                                    <div class="col-12 col-sm-7">
+
+                                        <label
+                                            for="donorName"
+                                            class="form-label">
+                                            Name
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="donorName"
+                                            name="donor_name"
+                                            autocomplete="name"
+                                            maxlength="150">
+
+                                    </div>
+
+                                    <div class="col-12 col-sm-5">
+
+                                        <label
+                                            for="donorPhone"
+                                            class="form-label">
+                                            Phone
+                                            <span class="text-muted fw-normal">
+                                                (optional)
+                                            </span>
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            class="form-control"
+                                            id="donorPhone"
+                                            name="donor_phone"
+                                            autocomplete="tel"
+                                            maxlength="50">
+
+                                    </div>
+
+                                </div>
+
+                                <div>
+
+                                    <label
+                                        for="donorEmail"
+                                        class="form-label">
+                                        Email address
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="donorEmail"
+                                        name="donor_email"
+                                        autocomplete="email"
+                                        required>
+
+                                    <div class="form-text">
+                                        We'll use this for your donation
+                                        confirmation.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- =============================
+                                 Optional extras
+                                 ============================= -->
+                            <div class="donate-fieldset">
+
+                                <p class="donate-legend">
+                                    Optional
+                                </p>
+
+                                <div class="mb-3">
+
+                                    <label
+                                        for="donationPurpose"
+                                        class="form-label">
+                                        Donation purpose
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="donationPurpose"
+                                        name="purpose">
+
+                                        <option value="">
+                                            General Support
+                                        </option>
+
+                                        <option value="Youth Development">
+                                            Youth Development
+                                        </option>
+
+                                        <option value="Arts and Culture">
+                                            Arts &amp; Culture
+                                        </option>
+
+                                        <option value="Community Programmes">
+                                            Community Programmes
+                                        </option>
+
+                                    </select>
+
+                                    <div class="form-text">
+                                        Not sure? General Support lets KCAP
+                                        direct your gift where it's needed
+                                        most.
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label
+                                        for="donationMessage"
+                                        class="form-label">
+                                        Message
+                                        <span class="text-muted fw-normal">
+                                            (optional)
+                                        </span>
+                                    </label>
+
+                                    <textarea
+                                        class="form-control"
+                                        id="donationMessage"
+                                        name="message"
+                                        rows="3"></textarea>
+
+                                </div>
+
+                                <div class="donate-anon">
+
+                                    <div class="form-check mb-0">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            id="anonymousDonation"
+                                            name="is_anonymous">
+
+                                        <label
+                                            class="form-check-label"
+                                            for="anonymousDonation">
+                                            Make my donation anonymous
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- =============================
+                                 Submit
+                                 ============================= -->
+                            <div class="donate-fieldset mt-4">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-donate"
+                                    id="donationSubmit">
+
+                                    <span class="js-button-text">
+                                        Continue to Payment
+                                    </span>
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                    <span
+                                        class="spinner-border
+                                               spinner-border-sm
+                                               d-none
+                                               js-button-spinner"
+                                        role="status"
+                                        aria-hidden="true">
+                                    </span>
+
+                                </button>
+
+                                <div class="donate-secure-note">
+                                    <i class="bi bi-lock-fill"></i>
+                                    <span>Secure checkout</span>
+                                </div>
+
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+{{ super() }}
+
+<script
+    src="{{ url_for(
+        'website.static',
+        filename='js/modules/donations.js'
+    ) }}">
+</script>
+
+{% endblock %}

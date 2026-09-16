@@ -1,0 +1,202 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block title %}
+Enquiry | KCAP Admin
+{% endblock %}
+
+
+{% block page_title %}
+Enquiry Details
+{% endblock %}
+
+
+{% block content %}
+
+<div
+    class="card"
+    id="enquiryCard"
+    data-enquiry-id="{{ enquiry.id }}"
+>
+
+    <div class="card-header">
+
+        <div
+            class="d-flex flex-column flex-sm-row
+                   justify-content-between
+                   align-items-sm-center gap-2"
+        >
+
+            <div>
+
+                <h3 class="card-title mb-1">
+                    {{ enquiry.name }}
+                </h3>
+
+                <div class="small text-muted">
+                    {{ enquiry.email }}
+                </div>
+
+            </div>
+
+
+            <span
+                id="enquiryStatus"
+                class="
+                    badge
+                    align-self-start
+
+                    {% if enquiry.status.value == 'new' %}
+                        text-bg-warning
+                    {% elif enquiry.status.value == 'resolved' %}
+                        text-bg-success
+                    {% else %}
+                        text-bg-secondary
+                    {% endif %}
+                "
+            >
+                {{ enquiry.status.value|title }}
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <dl class="row mb-4">
+
+            <dt class="col-sm-3">
+                Phone
+            </dt>
+
+            <dd class="col-sm-9">
+                {{ enquiry.phone or "Not provided" }}
+            </dd>
+
+
+            <dt class="col-sm-3">
+                Subject
+            </dt>
+
+            <dd class="col-sm-9">
+                {{ enquiry.subject or "General enquiry" }}
+            </dd>
+
+
+            <dt class="col-sm-3">
+                Received
+            </dt>
+
+            <dd class="col-sm-9">
+                {{ enquiry.created_at.strftime("%d %B %Y %H:%M") }}
+            </dd>
+
+        </dl>
+
+
+        <h5>
+            Message
+        </h5>
+
+        <div class="border rounded p-3 bg-body-tertiary mb-4">
+
+            {{ enquiry.message }}
+
+        </div>
+
+
+        <div
+            class="d-flex flex-column
+                   flex-sm-row gap-2"
+        >
+
+            {% if not enquiry.is_resolved %}
+
+                <button
+                    type="button"
+                    class="btn btn-success js-resolve-enquiry"
+                    data-id="{{ enquiry.id }}"
+                >
+                    <i class="bi bi-check-circle me-1"></i>
+                    Resolve
+                </button>
+
+            {% else %}
+
+                <button
+                    type="button"
+                    class="btn btn-warning js-reopen-enquiry"
+                    data-id="{{ enquiry.id }}"
+                >
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>
+                    Reopen
+                </button>
+
+            {% endif %}
+
+
+            <button
+                type="button"
+                class="btn btn-outline-danger js-archive-enquiry"
+                data-id="{{ enquiry.id }}"
+            >
+                <i class="bi bi-archive me-1"></i>
+                Archive
+            </button>
+
+
+            <a
+                href="mailto:{{ enquiry.email }}"
+                class="btn btn-outline-primary"
+            >
+                <i class="bi bi-reply me-1"></i>
+                Reply by Email
+            </a>
+
+
+            {% if enquiry.phone %}
+
+                <a
+                    href="tel:{{ enquiry.phone }}"
+                    class="btn btn-outline-secondary"
+                >
+                    <i class="bi bi-telephone me-1"></i>
+                    Call
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+
+    <a
+        href="{{ url_for('dashboard.enquiries') }}"
+        class="btn btn-link px-0"
+    >
+        <i class="bi bi-arrow-left me-1"></i>
+        Back to enquiries
+    </a>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script
+    src="{{ url_for(
+        'dashboard.static',
+        filename='js/modules/enquiries.js'
+    ) }}"
+></script>
+
+{% endblock %}

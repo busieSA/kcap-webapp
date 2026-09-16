@@ -1,0 +1,37 @@
+/*
+|--------------------------------------------------------------------------
+| KCAP Admin Login
+|--------------------------------------------------------------------------
+*/
+
+
+.login-page {
+    min-height: 100vh;
+}
+
+
+.login-box {
+    width: min(
+        92%,
+        420px
+    );
+}
+
+
+.login-logo {
+    font-size: 1.7rem;
+}
+
+
+.login-card-body {
+    padding: 1.5rem;
+}
+
+
+@media (min-width: 576px) {
+
+    .login-card-body {
+        padding: 2rem;
+    }
+
+}
